@@ -1,2 +1,4 @@
 .dub/
 node_modules
+*pipe*
+*pipe

@@ -2,9 +2,11 @@ extends wrapper
 
 block main
     div.col-lg-5.col-sm-10(style="height:100%")
+        button#btn Compile
+        button#clr Clear
         div.editorcontainer(style="height:100%")
-    div.col-lg-5.col-sm-10.
-        World
+    div.col-lg-5.col-sm-10
+        iframe#frame(style="width:700px; height:600px;")
 
 
     script(src="./codemirror-compressed.js")
@@ -12,6 +14,15 @@ block main
     link(rel="stylesheet", href="solarized.css")
 
     script.
+        function betterTab(cm) {
+          if (cm.somethingSelected()) {
+            cm.indentSelection("add");
+          } else {
+            cm.replaceSelection(cm.getOption("indentWithTabs")? "\t":
+              Array(cm.getOption("indentUnit") + 1).join(" "), "end", "+input");
+          }
+        }
+
         var myCodeMirror = CodeMirror(document.querySelector(".editorcontainer"), {
             mode: "livescript",
             value: "hello there",
@@ -22,7 +33,21 @@ block main
             viewportMargin: Infinity,
             indentWithTabs: false,
             tabSize: 4,
-            indentUnit: 4
+            indentUnit: 4,
+            extraKeys: { Tab: betterTab }
         });
+
+        var iframe = document.querySelector("#frame");
+
+        document.querySelector("#btn").onclick = (function() {
+            var v = btoa(myCodeMirror.getValue())
+            iframe.src = "/compile?source=" + v;
+        });
+
+        document.querySelector("#clr").onclick = (function() {
+            iframe.src = "";
+        });
+
+
 
     link(rel="stylesheet", href="style.css")
