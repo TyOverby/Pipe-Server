@@ -1,0 +1,13 @@
+.cm-tab{
+    /*display: none !important;*/
+    color: rgba(0,0,0,0) !important;
+}
+.CodeMirror {
+  border: 1px solid #eee;
+  height: auto;
+
+}
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}

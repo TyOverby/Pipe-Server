@@ -1,0 +1,28 @@
+extends wrapper
+
+block main
+    div.col-lg-5.col-sm-10(style="height:100%")
+        div.editorcontainer(style="height:100%")
+    div.col-lg-5.col-sm-10.
+        World
+
+
+    script(src="./codemirror-compressed.js")
+    link(rel="stylesheet", href="codemirror.css")
+    link(rel="stylesheet", href="solarized.css")
+
+    script.
+        var myCodeMirror = CodeMirror(document.querySelector(".editorcontainer"), {
+            mode: "livescript",
+            value: "hello there",
+            theme: "solarized",
+            lineNumbers: true,
+            styleActiveLine: true,
+            matchBrackets: true,
+            viewportMargin: Infinity,
+            indentWithTabs: false,
+            tabSize: 4,
+            indentUnit: 4
+        });
+
+    link(rel="stylesheet", href="style.css")

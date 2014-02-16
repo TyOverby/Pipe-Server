@@ -1,0 +1,9 @@
+{
+	"name": "pipe-server",
+	"description": "A minimal D application.",
+	"copyright": "Copyright © 2014, ty",
+	"authors": ["Ty Overby", "Meyer Kizner"],
+	"dependencies": {
+        "vibe-d": "0.7.19-beta.4"
+	}
+}
