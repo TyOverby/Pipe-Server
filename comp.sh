@@ -1,5 +1,6 @@
 #!/bin/bash
 
-scala com.prealpha.pipe.generators.latex.LatexDocument $1 > "$1.latex"
+vulcan < $1 > "$1.latex" &
+latexmk -pdf "$1.latex"
 
-lualatex "$1.latex"
+latexmk -c "$1.latex"
